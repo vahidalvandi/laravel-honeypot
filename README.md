@@ -248,7 +248,7 @@ or
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
         ]);
 
-        // will show blank responce page in iframe inside modal
+        // will show blank response page in iframe inside modal
         $middleware->append(\Spatie\Honeypot\ProtectAgainstSpam::class);
 ```
 
