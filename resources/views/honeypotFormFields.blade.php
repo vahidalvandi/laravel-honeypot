@@ -1,15 +1,6 @@
 @if($enabled)
-    @if($withCsp)
-        <style @cspNonce>
-            .hidden_honypot {
-                display: none !important;
-            }
-        </style>
-    @endif
-
-    <div id="{{ $nameFieldName }}_wrap" 
-         class="hidden_honypot" 
-         @if(!$withCsp) style="display: none;" aria-hidden="true" @endif>
+<style @if($withCsp) @cspNonce @endif>.hidden_block_honeypot {display: none !important;}</style>
+    <div id="{{ $nameFieldName }}_wrap" class="hidden_block_honeypot" >
         
         <input id="{{ $nameFieldName }}"
                name="{{ $nameFieldName }}"
