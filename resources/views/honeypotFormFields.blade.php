@@ -1,17 +1,17 @@
 @if($enabled)
-<style @if($withCsp) @cspNonce @endif>.hidden_block_honeypot {display: none !important;}</style>
-    <div id="{{ $nameFieldName }}_wrap" class="hidden_block_honeypot" >
-        
+    @if($withCsp)
+        <style @cspNonce>#{{ $nameFieldName }}_wrap { display: none; }</style>
+    @endif
+    <div id="{{ $nameFieldName }}_wrap" @unless($withCsp) style="display: none" @endunless aria-hidden="true">
         <input id="{{ $nameFieldName }}"
                name="{{ $nameFieldName }}"
-               type="hidden"
+               type="text"
                value=""
                @if ($livewireModel ?? false) wire:model.defer="{{ $livewireModel }}.{{ $unrandomizedNameFieldName }}" @endif
                autocomplete="nope"
                tabindex="-1">
-
         <input name="{{ $validFromFieldName }}"
-               type="hidden"
+               type="text"
                value="{{ $encryptedValidFrom }}"
                @if ($livewireModel ?? false) wire:model.defer="{{ $livewireModel }}.{{ $validFromFieldName }}" @endif
                autocomplete="off"
